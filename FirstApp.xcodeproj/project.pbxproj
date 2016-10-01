@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C9BAA04C1D9FA7730050D3CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAA04B1D9FA7730050D3CD /* AppDelegate.swift */; };
-		C9BAA04E1D9FA7730050D3CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAA04D1D9FA7730050D3CD /* ViewController.swift */; };
+		C9BAA04E1D9FA7730050D3CD /* Exercice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAA04D1D9FA7730050D3CD /* Exercice.swift */; };
 		C9BAA0511D9FA7730050D3CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BAA04F1D9FA7730050D3CD /* Main.storyboard */; };
 		C9BAA0531D9FA7730050D3CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BAA0521D9FA7730050D3CD /* Assets.xcassets */; };
 		C9BAA0561D9FA7730050D3CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BAA0541D9FA7730050D3CD /* LaunchScreen.storyboard */; };
 		C9BAA0611D9FA7730050D3CD /* FirstAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAA0601D9FA7730050D3CD /* FirstAppTests.swift */; };
 		C9BAA06C1D9FA7730050D3CD /* FirstAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAA06B1D9FA7730050D3CD /* FirstAppUITests.swift */; };
+		C9BAA07A1DA025370050D3CD /* BoutonArrondi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAA0791DA025370050D3CD /* BoutonArrondi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		C9BAA0481D9FA7730050D3CD /* FirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BAA04B1D9FA7730050D3CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C9BAA04D1D9FA7730050D3CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C9BAA04D1D9FA7730050D3CD /* Exercice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercice.swift; sourceTree = "<group>"; };
 		C9BAA0501D9FA7730050D3CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9BAA0521D9FA7730050D3CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9BAA0551D9FA7730050D3CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		C9BAA0671D9FA7730050D3CD /* FirstAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BAA06B1D9FA7730050D3CD /* FirstAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppUITests.swift; sourceTree = "<group>"; };
 		C9BAA06D1D9FA7730050D3CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BAA0791DA025370050D3CD /* BoutonArrondi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoutonArrondi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				C9BAA04B1D9FA7730050D3CD /* AppDelegate.swift */,
-				C9BAA04D1D9FA7730050D3CD /* ViewController.swift */,
+				C9BAA04D1D9FA7730050D3CD /* Exercice.swift */,
 				C9BAA04F1D9FA7730050D3CD /* Main.storyboard */,
 				C9BAA0521D9FA7730050D3CD /* Assets.xcassets */,
 				C9BAA0541D9FA7730050D3CD /* LaunchScreen.storyboard */,
 				C9BAA0571D9FA7730050D3CD /* Info.plist */,
+				C9BAA0791DA025370050D3CD /* BoutonArrondi.swift */,
 			);
 			path = FirstApp;
 			sourceTree = "<group>";
@@ -256,8 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BAA04E1D9FA7730050D3CD /* ViewController.swift in Sources */,
+				C9BAA04E1D9FA7730050D3CD /* Exercice.swift in Sources */,
 				C9BAA04C1D9FA7730050D3CD /* AppDelegate.swift in Sources */,
+				C9BAA07A1DA025370050D3CD /* BoutonArrondi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
