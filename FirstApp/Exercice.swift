@@ -26,7 +26,6 @@ class Exercice: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello World !")
         nbEntree.delegate = self
         slider.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longClickSurSlider)))
         stepper.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(glisserDeposerStepper)))
@@ -34,8 +33,6 @@ class Exercice: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-      
-        
         // Dispose of any resources that can be recreated.
     }
     
@@ -58,7 +55,11 @@ class Exercice: UIViewController, UITextFieldDelegate {
         updateValues(Int(slider.value))
     }
     
-    // Action reliée au TextField qui met à jour les valeurs
+    /* 
+     Action reliée au TextField qui met à jour les valeurs
+     Comme le TextField peut recevoir n'importe quel texte,
+     on vérifie d'abord que celui-ci représente bien un nombre entier
+    */
     @IBAction
     func texteModifie(field : UITextField){
         if let text = nbEntree.text where nbEntree.text != "" {
@@ -68,7 +69,8 @@ class Exercice: UIViewController, UITextFieldDelegate {
         }
     }
     
-    /* Met à jour les valeurs du TextField, Stepper et Slider
+    /* 
+     Met à jour les valeurs du TextField, Stepper et Slider
      Si la valeur est inférieure à 0, alors la valeur affichée est 0
      Si la valeur est supérieure à 99, alors la valeur affichée est 99
     */
@@ -91,6 +93,7 @@ class Exercice: UIViewController, UITextFieldDelegate {
        checkResultat()
     }
     
+    // Affiche une popup quand on fait un clic long sur le Slider
     func longClickSurSlider(sended : UILongPressGestureRecognizer){
         alert("Clic long", message: "coucou")
     }
@@ -123,6 +126,8 @@ class Exercice: UIViewController, UITextFieldDelegate {
      Au début de l'action : met à jour la coordonnée d'origine
      Au milieu de l'action : met à jour la position du stepper
      À la fin de l'action : lance l'animation de retour du stepper et met à jour les valeurs
+     Les valeurs sont incrémentées si la dernière position du Stepper est plus à droite 
+     que la position d'origine et décrémentées dans le cas contraire
     */
     func glisserDeposerStepper(sender : UIPanGestureRecognizer){
         switch sender.state {
