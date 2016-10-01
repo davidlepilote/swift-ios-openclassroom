@@ -21,7 +21,6 @@ class Exercice: UIViewController, UITextFieldDelegate {
     
     @IBOutlet
     var stepper : UIStepper!
-    var stepValue = 0
     
     var modeAuto = false
     
@@ -47,25 +46,49 @@ class Exercice: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func glisserDeposerStepper(sender : UIPanGestureRecognizer){
-        let view = sender.view!
-        let coordonne = sender.locationInView(self.view)
-        view.center = coordonne
-    }
-    
+    // Action reliée au Stepper qui met à jour les valeurs
     @IBAction
     func increment(stepper : UIStepper){
-        nbEntree.text = String(Int(stepper.value))
+        updateValues(Int(stepper.value))
     }
     
+    // Action reliée au Slider qui met à jour les valeurs
+    @IBAction
+    func slide(slider : UISlider){
+        updateValues(Int(slider.value))
+    }
+    
+    // Action reliée au TextField qui met à jour les valeurs
+    @IBAction
+    func texteModifie(field : UITextField){
+        if let text = nbEntree.text where nbEntree.text != "" {
+            if let number = Int(text) where Int(text) != nil{
+                updateValues(number)
+            }
+        }
+    }
+    
+    /* Met à jour les valeurs du TextField, Stepper et Slider
+     Si la valeur est inférieure à 0, alors la valeur affichée est 0
+     Si la valeur est supérieure à 99, alors la valeur affichée est 99
+    */
+    private func updateValues(value : Int){
+        var valBornee = value
+        if(valBornee < 0){
+            valBornee = 0
+        }
+        if(valBornee > 99){
+            valBornee = 99
+        }
+        nbEntree.text = String(valBornee)
+        slider.setValue(Float(valBornee), animated: true)
+        stepper.value = Double(valBornee)
+    }
+    
+    // Action reliée au bouton qui vérifie si le résultat entré est le bon
     @IBAction
     func clickButton(button : UIButton){
        checkResultat()
-    }
-    
-    @IBAction
-    func slide(slider : UISlider){
-        nbEntree.text = String(Int(slider.value))
     }
     
     func longClickSurSlider(sended : UILongPressGestureRecognizer){
@@ -79,34 +102,44 @@ class Exercice: UIViewController, UITextFieldDelegate {
             if Int(resultat) == 8 {
                 alert("Bravo", message: "4 + 4 = 8\nC'est une bonne réponse")
             } else {
-                alert("Faux", message: "Ce n'est pas la bonne réponse, réessayez ! \(Int(resultat))")
+                alert("Faux", message: "Ce n'est pas la bonne réponse, réessayez !")
             }
         } else {
             alert("Champ vide", message: "Veuillez entrer une valeur")
         }
     }
     
+    // Plus utilisé
     @IBAction
     func toggleModeAuto(uiSwitch : UISwitch){
         modeAuto = uiSwitch.on
         fin.hidden = modeAuto
     }
     
-    @IBAction
-    func texteModifie(field : UITextField){
-        if let text = nbEntree.text where nbEntree.text != "" {
-            if let number = Int(text) where Int(text) != nil{
-                stepper.value = Double(number)
-                slider.value = Float(number)
-            }
+    // Coordonnee d'origine du Stepper, mise à jour quand on commence le glisser-déposer
+    var coordonneOrigine = CGPoint()
+    
+    /* Met à jour le stepper durant le glisser-déposer
+     Au début de l'action : met à jour la coordonnée d'origine
+     Au milieu de l'action : met à jour la position du stepper
+     À la fin de l'action : lance l'animation de retour du stepper et met à jour les valeurs
+    */
+    func glisserDeposerStepper(sender : UIPanGestureRecognizer){
+        switch sender.state {
+        case UIGestureRecognizerState.Began:
+            coordonneOrigine = sender.view!.center
+        case UIGestureRecognizerState.Changed:
+            let view = sender.view!
+            let coordonne = sender.locationInView(self.view)
+            view.center = coordonne
+        case UIGestureRecognizerState.Ended:
+            let view = sender.view!
+            updateValues(Int(self.stepper.value) + (sender.view!.center.x > self.coordonneOrigine.x ? 1 : -1))
+            UIView.animateWithDuration(0.5, animations: {
+                view.center = self.coordonneOrigine
+            })
+        default: () // Do nothing
         }
-        /*if modeAuto{
-            if let resultat = nbEntree.text where resultat != ""{
-                if Int(resultat) == 8{
-                    alert("Bravo", message: "4 + 4 = 8\nC'est une bonne réponse")
-                }
-            }
-        }*/
     }
     
     //Ouvre une popup
