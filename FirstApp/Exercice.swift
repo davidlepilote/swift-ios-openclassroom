@@ -22,13 +22,34 @@ class Exercice: UIViewController, UITextFieldDelegate {
     @IBOutlet
     var stepper : UIStepper!
     
+    @IBOutlet
+    var titleLabel : UILabel!
+    
+    @IBOutlet
+    var consigne : UILabel!
+    
     var modeAuto = false
+    
+    var model : CalculExercice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nbEntree.delegate = self
         slider.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longClickSurSlider)))
         stepper.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(glisserDeposerStepper)))
+        titleLabel.text = model?.titre
+        consigne.text = "\(model!.consigne) = ?"
+        let img = UIImage(named: "help")
+        let barButtonItem = UIBarButtonItem(image: img, style : .Plain, target : self, action: #selector(clicHelp))
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        navigationItem.backBarButtonItem?.title = "Retour"
+    }
+    
+    func clicHelp(sender : UIBarButtonItem){
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,9 +122,9 @@ class Exercice: UIViewController, UITextFieldDelegate {
     private func checkResultat(){
         //On vérifie que le texte entré par l'utilisateur n'est pas nil
         if let resultat = nbEntree.text where resultat != "" {
-            //On regarde si le résultat est 8
-            if Int(resultat) == 8 {
-                alert("Bravo", message: "4 + 4 = 8\nC'est une bonne réponse")
+            //On regarde si le résultat est le bon
+            if Int(resultat) == model?.reponse {
+                alert("Bravo", message: "\(model?.consigne) = \(model?.reponse) !\nC'est une bonne réponse")
             } else {
                 alert("Faux", message: "Ce n'est pas la bonne réponse, réessayez !")
             }
