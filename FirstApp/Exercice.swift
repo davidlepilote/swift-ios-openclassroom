@@ -10,38 +10,31 @@ import UIKit
 
 class Exercice: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet
-    var nbEntree : UITextField!
-    
-    @IBOutlet
-    var fin : UIButton!
-    
-    @IBOutlet
-    var slider : UISlider!
-    
-    @IBOutlet
-    var stepper : UIStepper!
-    
-    @IBOutlet
-    var titleLabel : UILabel!
-    
-    @IBOutlet
-    var consigne : UILabel!
+    @IBOutlet var nbEntree : UITextField!
+    @IBOutlet var fin : UIButton!
+    @IBOutlet var slider : UISlider!
+    @IBOutlet var stepper : UIStepper!
+    @IBOutlet var titleLabel : UILabel!
+    @IBOutlet var consigne : UILabel!
     
     var modeAuto = false
-    
     var model : CalculExercice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         nbEntree.delegate = self
         slider.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longClickSurSlider)))
         stepper.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(glisserDeposerStepper)))
-        titleLabel.text = model?.titre
-        consigne.text = "\(model!.consigne) = ?"
         let img = UIImage(named: "help")
         let barButtonItem = UIBarButtonItem(image: img, style : .Plain, target : self, action: #selector(clicHelp))
         navigationItem.rightBarButtonItem = barButtonItem
+        
+        // Change the View if the model is not null
+        guard let model = model else { return }
+        
+        titleLabel.text = model.titre
+        self.consigne.text = "\(model.consigne) = ?"
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -66,13 +59,13 @@ class Exercice: UIViewController, UITextFieldDelegate {
     
     // Action reliée au Stepper qui met à jour les valeurs
     @IBAction
-    func increment(stepper : UIStepper){
+    func increment(_ stepper : UIStepper){
         updateValues(Int(stepper.value))
     }
     
     // Action reliée au Slider qui met à jour les valeurs
     @IBAction
-    func slide(slider : UISlider){
+    func slide(_ slider : UISlider){
         updateValues(Int(slider.value))
     }
     
@@ -82,7 +75,7 @@ class Exercice: UIViewController, UITextFieldDelegate {
      on vérifie d'abord que celui-ci représente bien un nombre entier
     */
     @IBAction
-    func texteModifie(field : UITextField){
+    func texteModifie(_ field : UITextField){
         if let text = nbEntree.text where nbEntree.text != "" {
             if let number = Int(text) where Int(text) != nil{
                 updateValues(number)
@@ -110,7 +103,7 @@ class Exercice: UIViewController, UITextFieldDelegate {
     
     // Action reliée au bouton qui vérifie si le résultat entré est le bon
     @IBAction
-    func clickButton(button : UIButton){
+    func clickButton(_ button : UIButton){
        checkResultat()
     }
     
@@ -123,8 +116,8 @@ class Exercice: UIViewController, UITextFieldDelegate {
         //On vérifie que le texte entré par l'utilisateur n'est pas nil
         if let resultat = nbEntree.text where resultat != "" {
             //On regarde si le résultat est le bon
-            if Int(resultat) == model?.reponse {
-                alert("Bravo", message: "\(model?.consigne) = \(model?.reponse) !\nC'est une bonne réponse")
+            if let model = self.model where Int(resultat) == model.reponse {
+                alert("Bravo", message: "\(model.consigne) = \(model.reponse) !\nC'est une bonne réponse")
             } else {
                 alert("Faux", message: "Ce n'est pas la bonne réponse, réessayez !")
             }
@@ -135,7 +128,7 @@ class Exercice: UIViewController, UITextFieldDelegate {
     
     // Plus utilisé
     @IBAction
-    func toggleModeAuto(uiSwitch : UISwitch){
+    func toggleModeAuto(_ uiSwitch : UISwitch){
         modeAuto = uiSwitch.on
         fin.hidden = modeAuto
     }

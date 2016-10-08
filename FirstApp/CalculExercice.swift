@@ -32,8 +32,5 @@ class CalculExercice{
             self.init(consigne: "", titre : "", reponse : -1)
         }
     }
-    
-    deinit{
-      // Should I do something here ??
-    }
+
 }
