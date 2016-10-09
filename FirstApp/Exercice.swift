@@ -112,12 +112,31 @@ class Exercice: UIViewController, UITextFieldDelegate {
         alert("Clic long", message: "coucou")
     }
     
+    func sauvegardeNbVictoires(){
+        // How to multi-thread
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        dispatch_async(queue, {
+            let params = NSUserDefaults.standardUserDefaults()
+            var nbVictoire = params.integerForKey("NB_VICTOIRES")
+            nbVictoire += 1
+            params.setInteger(nbVictoire, forKey: "NB_VICTOIRES")
+            params.synchronize()
+        })
+    }
+    
     private func checkResultat(){
         //On vérifie que le texte entré par l'utilisateur n'est pas nil
         if let resultat = nbEntree.text where resultat != "" {
             //On regarde si le résultat est le bon
             if let model = self.model where Int(resultat) == model.reponse {
-                alert("Bravo", message: "\(model.consigne) = \(model.reponse) !\nC'est une bonne réponse")
+                sauvegardeNbVictoires()
+                let victoryView = VictoryView()
+                victoryView.alpha = 0
+                self.view.addSubview(victoryView)
+                UIView.animateWithDuration(0.3, animations: {
+                    victoryView.alpha = 1
+                })
+                //alert("Bravo", message: "\(model.consigne) = \(model.reponse) !\nC'est une bonne réponse")
             } else {
                 alert("Faux", message: "Ce n'est pas la bonne réponse, réessayez !")
             }

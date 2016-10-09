@@ -10,6 +10,8 @@ import UIKit
 
 class Accueil : UIViewController, UIViewControllerTransitioningDelegate{
     
+    @IBOutlet var titleView : UILabel!
+    
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DrawerTransition()
     }
@@ -21,6 +23,7 @@ class Accueil : UIViewController, UIViewControllerTransitioningDelegate{
     override func viewDidAppear(animated: Bool) {
         navigationController?.navigationBar.tintColor = UIColor.redColor()
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blueColor()]
+        titleView.text = NSLocalizedString("TITLE", comment: "")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

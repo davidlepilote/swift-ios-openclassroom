@@ -1,0 +1,42 @@
+
+/* Class = "UIButton"; normalTitle = "Enregistrer"; ObjectID = "657-cq-kRu"; */
+"657-cq-kRu.normalTitle" = "Enregistrer";
+
+/* Class = "UIButton"; normalTitle = "Did I win ?"; ObjectID = "6rB-Ec-Fy2"; */
+"6rB-Ec-Fy2.normalTitle" = "Did I win ?";
+
+/* Class = "UIButton"; normalTitle = "Facile"; ObjectID = "9bD-Za-JFL"; */
+"9bD-Za-JFL.normalTitle" = "Facile";
+
+/* Class = "UILabel"; text = "Exercices d'arithmétique"; ObjectID = "Bf3-ea-yTO"; */
+"Bf3-ea-yTO.text" = "Exercices d'arithmétique";
+
+/* Class = "UITextField"; text = "0"; ObjectID = "J18-tV-CIm"; */
+"J18-tV-CIm.text" = "0";
+
+/* Class = "UITabBarItem"; title = "Modifier"; ObjectID = "M5t-Up-bVx"; */
+"M5t-Up-bVx.title" = "Modifier";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PTd-Tk-c2D"; */
+"PTd-Tk-c2D.normalTitle" = "Button";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "clI-8K-xF6"; */
+"clI-8K-xF6.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITabBarItem"; title = "Voir"; ObjectID = "fN5-eH-OXw"; */
+"fN5-eH-OXw.title" = "Voir";
+
+/* Class = "UIButton"; normalTitle = "Gérer mon CV"; ObjectID = "nw8-FV-OCD"; */
+"nw8-FV-OCD.normalTitle" = "Gérer mon CV";
+
+/* Class = "UILabel"; text = "Exercice d'arithmétique"; ObjectID = "oW6-NI-Vz2"; */
+"oW6-NI-Vz2.text" = "Exercice d'arithmétique";
+
+/* Class = "UILabel"; text = "4 + 4 = ?"; ObjectID = "p0q-xs-kXL"; */
+"p0q-xs-kXL.text" = "4 + 4 = ?";
+
+/* Class = "UIButton"; normalTitle = "Moyen"; ObjectID = "uRx-pd-735"; */
+"uRx-pd-735.normalTitle" = "Moyen";
+
+/* Class = "UINavigationItem"; title = "Accueil"; ObjectID = "wMF-9r-fNh"; */
+"wMF-9r-fNh.title" = "Accueil";
